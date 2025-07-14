@@ -15,21 +15,23 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-SI-$(Maven-Style) - Search for files '**/pom.xml' in the project was'.
-          restore-keys: ${{ runner.os }}-maven
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: "zulu"
           java-version: 17
+
       - name: Publish to Exchange
         run: |
-          mvn deploy --settings .maven/settings.xml -DskipInnuitTests \ 
+          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
           -Dclient.id="${{ secrets.CONNECTED_CLIENT_ID }}" \
           -Dclient.secret="${{ secrets.CONNECTED_CLIENT_SECRET }}"
       - name: Deploy to CloudHub 2.0
         run: |
-          mvn deploy --settings .maven/settings.xml -DskipInnuitTests -D MuleDeploy -Dclient.id="${{ secrets.CONNECTED_CLIENT_ID }}" \
+          mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+          -Dclient.id="${{ secrets.CONNECTED_CLIENT_ID }}" \
           -Dclient.secret="${{ secrets.CONNECTED_CLIENT_SECRET }}" \
-          -Denv="${dev}"
+          -Denv=dev
