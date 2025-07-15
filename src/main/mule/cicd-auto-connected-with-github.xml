@@ -21,6 +21,6 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="7f5d9413-ac14-4b01-9404-77e468463c17" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7f5d9413-ac14-4b01-9404-77e468463c17" message='#[payload ++ "after running maven clean"]'/>
 	</flow>
 </mule>
