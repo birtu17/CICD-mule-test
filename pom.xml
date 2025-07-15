@@ -18,60 +18,39 @@
 	</properties>
 
 	<build>
-	  <plugins>
-	    <plugin>
-	      <groupId>org.apache.maven.plugins</groupId>
-	      <artifactId>maven-clean-plugin</artifactId>
-	      <version>3.2.0</version>
-	      <extensions>true</extensions>
-	    </plugin>
-	
-	    <plugin>
-	      <groupId>org.mule.tools.maven</groupId>
-	      <artifactId>exchange-mule-maven-plugin</artifactId>
-	      <version>1.1.1</version>
-	      <executions>
-	        <execution>
-	          <id>exchange-pre-deploy</id>
-	          <phase>deploy</phase>
-	          <goals>
-	            <goal>exchange-pre-deploy</goal>
-	          </goals>
-	        </execution>
-	      </executions>
-	      <configuration>
-	        <organizationId>${project.groupId}</organizationId>
-	        <serverId>Repository</serverId>
-	      </configuration>
-	    </plugin>
-	
-	    <plugin>
-	      <groupId>org.mule.tools.maven</groupId>
-	      <artifactId>mule-maven-plugin</artifactId>
-	      <version>${mule.maven.plugin.version}</version>
-	      <extensions>true</extensions>
-	      <configuration>
-	        <classifier>mule-application/classifier</classifier>
-	        <cloudhub2Deployment>
-	          <uri>https://anypoint.mulesoft.com</uri>
-	          <provider>MC</provider>
-	          <environment>Sandbox</environment>
-	          <target>Cloudhub-US-East-2</target>
-	          <server>Repository</server>
-	          <applicationName>${project.artifactId}</applicationName>
-	          <releaseChannel>Edge</releaseChannel>
-	          <muleVersion>4.9.6</muleVersion>
-	          <replicas>1</replicas>
-	          <vCores>0.1</vCores>
-	        </cloudhub2Deployment>
-	        <deploymentSettings>
-	          <generateDefaultPublicurl>true</generateDefaultPublicurl>
-	        </deploymentSettings>
-	      </configuration>
-	    </plugin>
-	
-	  </plugins>
-</build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.2.0</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+			    <configuration>
+	              <classifier>mule-application/classifier</classifier>
+	              <cloudhub2Deployment>
+				    <uri>https://anypoint.mulesoft.com</uri>
+				    <provider>MC</provider>
+				    <environment>Sandbox</environment>
+				    <target>Cloudhub-US-East-2</target>
+				    <server>Repository</server>
+				    <applicationName>${project.artifactId}</applicationName>
+				    <releaseChannel>Edge</releaseChannel>
+				    <muleVersion>4.9.6</muleVersion>
+				    <replicas>1</replicas>
+				    <vCores>0.1</vCores>
+	              </cloudhub2Deployment>
+				  <deploymentSettings>
+				    <generateDefaultPublicurl>true</generateDefaultPublicurl>
+				  </deploymentSettings>
+			   </configuration>
+			 </plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
