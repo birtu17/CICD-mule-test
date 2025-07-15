@@ -4,7 +4,7 @@
 
 	<groupId>dc99784b-dced-4840-8a6e-27cf0c3e2653</groupId>
 	<artifactId>cicd-auto-connected-with-github</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.4</version>
 	<packaging>mule-application</packaging>
 
 	<name>cicd-auto-connected-with-github</name>
@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.9.6</app.runtime>
-		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+		<mule.maven.plugin.version>0.0.23</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -26,6 +26,10 @@
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>exchange-mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>exchange-pre-deploy</extensions>
 			    <configuration>
 	              <classifier>mule-application/classifier</classifier>
 	              <cloudhub2Deployment>
