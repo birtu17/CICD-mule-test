@@ -4,7 +4,7 @@
 
 	<groupId>dc99784b-dced-4840-8a6e-27cf0c3e2653</groupId>
 	<artifactId>cicd-auto-connected-with-github</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.7</version>
 	<packaging>mule-application</packaging>
 
 	<name>cicd-auto-connected-with-github</name>
@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.9.6</app.runtime>
+		<app.runtime>4.9.7</app.runtime>
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
 	</properties>
 
@@ -31,7 +31,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 			    <configuration>
-	              <classifier>mule-application/classifier</classifier>
+	              <classifier>mule-application</classifier>
 	              <cloudhub2Deployment>
 				    <uri>https://anypoint.mulesoft.com</uri>
 				    <provider>MC</provider>
@@ -40,7 +40,7 @@
 				    <server>Repository</server>
 				    <applicationName>${project.artifactId}</applicationName>
 				    <releaseChannel>Edge</releaseChannel>
-				    <muleVersion>4.9.6</muleVersion>
+				    <muleVersion>4.9.7</muleVersion>
 				    <replicas>1</replicas>
 				    <vCores>0.1</vCores>
 	              </cloudhub2Deployment>
@@ -106,6 +106,6 @@
 			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${project.groupId}/maven</url>
 			<layout>default</layout>
 		</repository>
-</distributionManagement>
+    </distributionManagement>
 
 </project>
