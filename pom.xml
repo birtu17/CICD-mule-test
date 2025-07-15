@@ -4,7 +4,7 @@
 
 	<groupId>dc99784b-dced-4840-8a6e-27cf0c3e2653</groupId>
 	<artifactId>cicd-auto-connected-with-github</artifactId>
-	<version>1.0.9</version>
+	<version>1.0.8</version>
 	<packaging>mule-application</packaging>
 
 	<name>cicd-auto-connected-with-github</name>
